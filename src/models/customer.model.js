@@ -9,7 +9,7 @@ const customerSchema = new mongoose.Schema(
         sellerId: 'Number',
         name: 'String',
         address: 'Object',
-        cpf: 'Number',
+        docId: 'Number',
         phone: 'String',
         route: 'Number',
         isActive: 'Boolean'

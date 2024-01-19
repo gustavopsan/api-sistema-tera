@@ -10,6 +10,7 @@ const deactivateUser = require('../controllers/user/deactivateUser.controller');
 const checkSession = require('../controllers/user/checkSession.controller');
 const requestPasswordRecovery = require('../controllers/user/requestPasswordRecovery.controller');
 const resetPassword = require('../controllers/user/resetPassword.controller');
+const updateUser = require('../controllers/user/updateUser.controller');
 
 const validateEmail = require('../modules/validateEmail.module');
 const validatePassword = require('../modules/validatePassword.module');
@@ -150,6 +151,16 @@ router.post('/user/resetPassword', (req, res) => {
     const { userId, token, newPassword } = req.body;
 
     resetPassword(userId, token, newPassword)
+        .then(response => {
+            res.json(response)
+        })
+        .catch(err => res.json(err))
+})
+
+router.post('/user/update', (req, res) => {
+    const { userId, key, newvalue } = req.body;
+
+    updateUser(userId, key, newvalue)
         .then(response => {
             res.json(response)
         })
