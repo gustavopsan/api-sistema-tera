@@ -3,17 +3,17 @@ const nodemailer = require('nodemailer');
 const sendMail = async (email, subject, text, html) => {
     try {
         const transporter = nodemailer.createTransport({
-            host: 'smtp.office365.com',
-            port: 587,
-            secure: true,
+            host: process.env.MAILER_HOST,
+            port: process.env.MAILER_PORT,
+            secure: false,
             auth: {
-                user: 'no-reply@ibvidaemcristo.com.br',
-                pass: 'editpro7@G'
+                user: process.env.MAILER_USERNAME,
+                pass: process.env.MAILER_PASSWORD
             }
         });
 
         await transporter.sendMail({
-            from: 'Mailer API',
+            from: `Mailer API ${process.env.MAILER_USERNAME}`,
             to: email,
             subject: subject,
             text: text,

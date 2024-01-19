@@ -5,7 +5,7 @@ async function getUser(userId) {
 
     if (!user) {
         return {
-            message: 'User not found'
+            message: 'USER_NOT_FOUND'
         }
     } else {
         return {

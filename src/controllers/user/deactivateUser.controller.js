@@ -17,7 +17,7 @@ async function deactivateUser(docId) {
         } else {
             return {
                 status: "error",
-                message: "user not found"
+                message: "USER_NOT_FOUND"
             }
         }
     } catch (error) {

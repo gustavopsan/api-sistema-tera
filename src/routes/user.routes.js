@@ -8,9 +8,12 @@ const authenticate = require('../controllers/user/authenticate.controller');
 const activateUser = require('../controllers/user/activateUser.controller');
 const deactivateUser = require('../controllers/user/deactivateUser.controller');
 const checkSession = require('../controllers/user/checkSession.controller');
+const requestPasswordRecovery = require('../controllers/user/requestPasswordRecovery.controller');
+const resetPassword = require('../controllers/user/resetPassword.controller');
 
 const validateEmail = require('../modules/validateEmail.module');
 const validatePassword = require('../modules/validatePassword.module');
+const sendMail = require('../modules/sendMail.module');
 
 router.post('/user/create', (req, res) => {
     const { name, docId, role, phone, email, password, confirmPassword } = req.body;
@@ -116,6 +119,37 @@ router.post('/user/deactivate', (req, res) => {
     const { docId } = req.body;
 
     deactivateUser(docId)
+        .then(response => {
+            res.json(response)
+        })
+        .catch(err => res.json(err))
+})
+
+router.post('/user/sendEmail', (req, res) => {
+    const { email, subject, text, html } = req.body;
+
+    sendMail(email, subject, text, html)
+        .then(response => {
+            res.json(response)
+        })
+        .catch(err => res.json(err))
+})
+
+router.post('/user/requestPasswordRecovery', (req, res) => {
+    const { email } = req.body;
+
+    requestPasswordRecovery(email)
+        .then(response => {
+            res.json(response)
+        })
+        .catch(err => res.json(err))
+
+})
+
+router.post('/user/resetPassword', (req, res) => {
+    const { userId, token, newPassword } = req.body;
+
+    resetPassword(userId, token, newPassword)
         .then(response => {
             res.json(response)
         })
