@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 const customerSchema = new mongoose.Schema(
     {
         customerId: {
-            type: 'Number',
+            type: 'String',
             unique: true
         },
-        sellerId: 'Number',
+        sellerId: 'String',
         name: 'String',
         address: 'Object',
-        docId: 'Number',
+        docId: {
+            type: 'String',
+            unique: true
+        },
         phone: 'String',
         route: 'Number',
         isActive: 'Boolean'

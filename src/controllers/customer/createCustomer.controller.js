@@ -5,7 +5,7 @@ async function createCustomer(sellerId, name, address, docId, phone, route) {
         var customers = await customerModel.find();
         var customerId;
 
-        if (customers.lenght === 0) {
+        if (customers.length === 0) {
             customerId = "customer_00000"
         } else {
             let lastId = customers[customers.length - 1].customerId;
