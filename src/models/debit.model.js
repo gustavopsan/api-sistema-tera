@@ -1,20 +1,19 @@
 const mongoose = require('mongoose');
 
-const saleSchema = new mongoose.Schema(
+const debitSchema = new mongoose.Schema(
     {
-        saleId: {
-            type: 'Number',
+        debitId: {
+            type: 'String',
             unique: true
         },
-        clientId: 'String',
-        sellerId: 'String',
-        date: 'Object',
-        products: 'Array',
+        userId: 'String',
+        customerId: 'String',
         totalValue: 'Decimal',
-        paymentMethod: 'String',
         payments: 'Array'
     },
-    { timestamps: true }
+    {
+        timestamps: true
+    }
 );
 
 const decimal2JSON = (v, i, prev) => {
@@ -26,13 +25,13 @@ const decimal2JSON = (v, i, prev) => {
     }
 };
 
-saleSchema.set('toJSON', {
+debitSchema.set('toJSON', {
     transform: (doc, ret) => {
        decimal2JSON(ret);
        return ret;
     }
 });
 
-const Sale = mongoose.model('Sale', saleSchema);
+const Debit = mongoose.model('Debit', debitSchema);
 
-module.exports = Sale;
+module.exports = debit;
