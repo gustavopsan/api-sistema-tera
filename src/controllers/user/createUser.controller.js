@@ -1,6 +1,6 @@
 const userModel = require('../../models/user.model');
 
-async function createUser(name, docId, role, phone, email, password) {
+async function createUser(name, docId, role, module, phone, email, password) {
     try {
         var users = await userModel.find();
         var userId;
@@ -18,6 +18,7 @@ async function createUser(name, docId, role, phone, email, password) {
                 docId,
                 name,
                 role,
+                module,
                 phone,
                 email,
                 password,

@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema(
         },
         name: 'String',
         role: 'String',
+        module: 'String',
         phone: 'String',
         email: {
             type: "String",

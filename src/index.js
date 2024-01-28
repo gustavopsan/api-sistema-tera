@@ -9,6 +9,7 @@ const app = express();
 //Routes
 const userRoutes = require('./routes/user.routes')
 const customerRoutes = require('./routes/customer.routes');
+const debitRoutes = require('./routes/debit.routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 
 app.use(userRoutes);
 app.use(customerRoutes);
+app.use(debitRoutes);
 
 require('../src/modules/databaseConnection.module');
 

@@ -17,7 +17,7 @@ const validatePassword = require('../modules/validatePassword.module');
 const sendMail = require('../modules/sendMail.module');
 
 router.post('/user/create', (req, res) => {
-    const { name, docId, role, phone, email, password, confirmPassword } = req.body;
+    const { name, docId, role, module, phone, email, password, confirmPassword } = req.body;
 
     if (password !== confirmPassword) {
         res.json({
@@ -38,7 +38,7 @@ router.post('/user/create', (req, res) => {
             message: 'INVALID_PASSWORD_FORMAT'
         })
     } else {
-        createUser(name, docId, role, phone, email, password)
+        createUser(name, docId, role, module, phone, email, password)
             .then(response => {
                 if (response.hasOwnProperty('keyValue')) {
                     res.json({
@@ -80,9 +80,9 @@ router.post('/user/find', (req, res) => {
 })
 
 router.post('/user/auth', (req, res) => {
-    const { docId, password } = req.body;
+    const { email, password } = req.body;
 
-    authenticate(docId, password)
+    authenticate(email, password)
         .then(response => {
             if (response.status == 'error') {
                 res.json(response);

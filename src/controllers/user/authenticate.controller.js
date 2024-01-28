@@ -1,8 +1,8 @@
 const userModel = require('../../models/user.model');
 
-async function authenticate(docId, password) {
+async function authenticate(email, password) {
     try {
-        const userLogged = await userModel.findOne({ docId: docId });
+        const userLogged = await userModel.findOne({ email: email });
 
         if (!userLogged) {
             return {

@@ -6,10 +6,13 @@ const debitSchema = new mongoose.Schema(
             type: 'String',
             unique: true
         },
-        userId: 'String',
+        sellerId: 'String',
         customerId: 'String',
         totalValue: 'Decimal',
-        payments: 'Array'
+        payments: 'Array',
+        paymentsAmount: 'Number',
+        paymentsRemaing: 'Number',
+        isQuited: 'Boolean'
     },
     {
         timestamps: true
@@ -34,4 +37,4 @@ debitSchema.set('toJSON', {
 
 const Debit = mongoose.model('Debit', debitSchema);
 
-module.exports = debit;
+module.exports = Debit;
