@@ -6,7 +6,7 @@ async function createDebit(sellerId, customerId, totalValue, payments, paymentsA
         var debitId;
 
         if (debits.length === 0) {
-            debitId - "debit_00000"
+            debitId = "debit_00000"
         } else {
             let lastId = debits[debits.length - 1].debitId;
             customerId = 'debit_' + Math.abs((parseInt(lastId.split("_")[1]) + 1)).toString().padStart(5, '0');
