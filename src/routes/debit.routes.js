@@ -5,9 +5,9 @@ const listDebits = require('../controllers/debit/listDebits.controller');
 const payDebit = require('../controllers/debit/payDebit.controller');
 
 router.post('/debits/create', (req, res) => {
-    const { sellerId, customerId, totalValue, payments, paymentsAmount, paymentsRemaing } = req.body;
+    const { sellerId, customerId, value, paymentsAmount, paymentsRemaing } = req.body;
 
-    createDebit(sellerId, customerId, totalValue, payments, paymentsAmount, paymentsRemaing)
+    createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })
@@ -21,9 +21,9 @@ router.post('/debits/list', (req, res) => {
 })
 
 router.post('/debits/pay', (req, res) => {
-    const { debitId, index } = req.body;
+    const { debitId, paidValue } = req.body;
 
-    payDebit(debitId, index)
+    payDebit(debitId, paidValue)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })

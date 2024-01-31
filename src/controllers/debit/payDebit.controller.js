@@ -1,20 +1,51 @@
 const debitModel = require('../../models/debit.model');
 
-async function payDebit(debitId, index) {
+async function payDebit(debitId, paidValue) {
     try {
+        // Instanciando a dívida
         const debit = await debitModel.findOne({debitId: debitId});
-        var payments = debit.payments;
-        var selectedPayment = payments[index];
+        let payments = debit.payments;
+        let isQuited = false;
+        
+        // Criando o pagamento
+        var payment = {
+            index: payments.length + 1,
+            date: new Date().toJSON(),
+            value: paidValue
+        }
 
-        selectedPayment[0].paid = true;
+        // Gravando o pagamento
+        payments.push(payment);
 
-        const debitUpdated = await debitModel.findOneAndUpdate(
+        // Calculando o valor restante
+        let valueRemaing = debit.toJSON().valueRemaing;
+
+        var newValueRemaing = valueRemaing - paidValue;
+
+        if (debit.paymentsRemaing > 0) {
+            var paymentsRemaing = debit.paymentsRemaing - 1;
+        }
+
+        // Testando se a dívida já está quitada
+        if (newValueRemaing === 0) {
+            isQuited = true;
+        }
+
+        // Atualizando os valores da dívida
+        const updateDebit = await debitModel.findOneAndUpdate(
             { debitId: debitId },
-            { payments: payments },
+            { 
+                payments: payments,
+                valueRemaing: newValueRemaing,
+                paymentsRemaing: paymentsRemaing,
+                isQuited: isQuited
+            },
             { new: false }
         );
 
-        return debitUpdated;
+        const debitUpdated = await debitModel.findOne({debitId: debitId});
+
+        return debitUpdated;    
         
     } catch (error) {
         return error;

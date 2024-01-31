@@ -9,6 +9,7 @@ const debitSchema = new mongoose.Schema(
         sellerId: 'String',
         customerId: 'String',
         totalValue: 'Decimal',
+        valueRemaing: 'Decimal',
         payments: 'Array',
         paymentsAmount: 'Number',
         paymentsRemaing: 'Number',
