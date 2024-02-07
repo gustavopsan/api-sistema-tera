@@ -28,6 +28,7 @@ async function authenticate(email, password) {
                 name: userLogged.name,
                 email: userLogged.email,
                 role: userLogged.role,
+                module: userLogged.module,
                 phone: userLogged.phone,
                 isActive: userLogged.isActive
             }

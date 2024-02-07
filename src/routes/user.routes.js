@@ -87,7 +87,7 @@ router.post('/user/auth', (req, res) => {
             if (response.status == 'error') {
                 res.json(response);
             } else {
-                const token = JWT.sign({ id: response.userId }, process.env.SECRET, { expiresIn: '1m' });
+                const token = JWT.sign({ id: response.userId }, process.env.SECRET, { expiresIn: '2d' });
 
                 res.json({
                     userData: response,
