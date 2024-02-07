@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
         },
         name: 'String',
         role: 'String',
-        module: 'String',
+        module: 'Array',
         phone: 'String',
         email: {
             type: "String",
