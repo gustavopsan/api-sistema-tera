@@ -14,7 +14,7 @@ async function requestPasswordRecovery(email) {
 
         if (error) {
             return {
-                status: error,
+                status: 'error',
                 message: 'Invalid email provided'
             }
         } else {
