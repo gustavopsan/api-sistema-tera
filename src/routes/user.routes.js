@@ -138,7 +138,7 @@ router.post('/user/sendEmail', (req, res) => {
 
 router.post('/user/requestPasswordRecovery', (req, res) => {
     const { email } = req.body;
-
+    
     requestPasswordRecovery(email)
         .then(response => {
             res.json(response)
