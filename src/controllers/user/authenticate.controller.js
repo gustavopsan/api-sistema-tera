@@ -24,6 +24,7 @@ async function authenticate(email, password) {
             }
         } else {
             return {
+                sellerId: userLogged._id,
                 userId: userLogged.userId,
                 name: userLogged.name,
                 email: userLogged.email,
