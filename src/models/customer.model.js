@@ -9,10 +9,7 @@ const customerSchema = new mongoose.Schema(
         sellerId: 'String',
         name: 'String',
         address: 'Object',
-        docId: {
-            type: 'String',
-            unique: true
-        },
+        docId: 'String',
         phone: 'String',
         route: 'Number',
         isActive: 'Boolean'
