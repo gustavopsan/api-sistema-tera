@@ -1,4 +1,5 @@
 const debitModel = require('../../models/debit.model');
+const customerModel = require('../../models/customer.model');
 
 async function createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing) {
     try {
@@ -9,8 +10,10 @@ async function createDebit(sellerId, customerId, value, paymentsAmount, payments
             debitId = "debit_00000"
         } else {
             let lastId = debits[debits.length - 1].debitId;
-            customerId = 'debit_' + Math.abs((parseInt(lastId.split("_")[1]) + 1)).toString().padStart(5, '0');
+            debitId = 'debit_' + Math.abs((parseInt(lastId.split("_")[1]) + 1)).toString().padStart(5, '0');
         }
+
+        const customerData = await customerModel.findOne({ _id: customerId });
 
         var totalValue = value + ((value / 100) * 20);
 
@@ -18,7 +21,7 @@ async function createDebit(sellerId, customerId, value, paymentsAmount, payments
             {
                 debitId,
                 sellerId,
-                customerId,
+                customerData,
                 totalValue,
                 valueRemaing: totalValue,
                 paymentsAmount,
