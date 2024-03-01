@@ -8,6 +8,7 @@ const customerSchema = new mongoose.Schema(
         },
         sellerId: 'String',
         name: 'String',
+        businessModel: 'String',
         address: 'Object',
         docId: 'String',
         phone: 'String',

@@ -1,6 +1,6 @@
 const customerModel = require('../../models/customer.model');
 
-async function createCustomer(sellerId, name, address, docId, phone, route) {
+async function createCustomer(sellerId, name, businessModel, address, docId, phone, route) {
     try {
         var customers = await customerModel.find();
         var customerId;
@@ -17,6 +17,7 @@ async function createCustomer(sellerId, name, address, docId, phone, route) {
                 customerId,
                 sellerId,
                 name,
+                businessModel,
                 address,
                 docId,
                 phone,

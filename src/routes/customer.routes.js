@@ -7,7 +7,7 @@ const searchCustomer = require('../controllers/customer/searchCustomer.controlle
 const updateCustomer = require('../controllers/customer/updateCustomer.controller');
 
 router.post('/customer/create', (req, res) => {
-    const { sellerId, name, address, docId, phone, route } = req.body;
+    const { sellerId, name, businessModel, address, docId, phone, route } = req.body;
 
     createCustomer(sellerId, name, address, docId, phone, route)
         .then(response => {
