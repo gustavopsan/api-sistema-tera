@@ -9,7 +9,7 @@ const updateCustomer = require('../controllers/customer/updateCustomer.controlle
 router.post('/customer/create', (req, res) => {
     const { sellerId, name, businessModel, address, docId, phone, route } = req.body;
 
-    createCustomer(sellerId, name, address, docId, phone, route)
+    createCustomer(sellerId, name, businessModel, address, docId, phone, route)
         .then(response => {
             res.json(response);
         })
