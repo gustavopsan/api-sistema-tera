@@ -7,9 +7,9 @@ const getDebit = require('../controllers/debit/getDebit.controller');
 const searchDebit = require('../controllers/debit/searchDebit.controller');
 
 router.post('/debits/create', (req, res) => {
-    const { sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentMethod, firstPaymentDate } = req.body;
+    const { sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate } = req.body;
 
-    createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentMethod, firstPaymentDate)
+    createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })
