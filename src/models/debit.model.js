@@ -13,6 +13,8 @@ const debitSchema = new mongoose.Schema(
         payments: 'Array',
         paymentsAmount: 'Number',
         paymentsRemaing: 'Number',
+        paymentModel: 'String',
+        firstPaymentDate: 'String',
         isQuited: 'Boolean'
     },
     {

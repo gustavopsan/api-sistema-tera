@@ -1,7 +1,7 @@
 const debitModel = require('../../models/debit.model');
 const customerModel = require('../../models/customer.model');
 
-async function createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing) {
+async function createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate) {
     try {
         var debits = await debitModel.find();
         var debitId;
@@ -26,6 +26,8 @@ async function createDebit(sellerId, customerId, value, paymentsAmount, payments
                 valueRemaing: totalValue,
                 paymentsAmount,
                 paymentsRemaing,
+                paymentModel,
+                firstPaymentDate,
                 payments: [],
                 isQuited: false
             }
