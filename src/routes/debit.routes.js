@@ -23,9 +23,9 @@ router.post('/debits/list', (req, res) => {
 })
 
 router.post('/debits/pay', (req, res) => {
-    const { debitId, paidValue } = req.body;
+    const { debitId, paidValue, paymentMethod } = req.body;
 
-    payDebit(debitId, paidValue)
+    payDebit(debitId, paidValue, paymentMethod)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })

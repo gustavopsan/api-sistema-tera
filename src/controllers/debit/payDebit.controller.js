@@ -1,6 +1,6 @@
 const debitModel = require('../../models/debit.model');
 
-async function payDebit(debitId, paidValue) {
+async function payDebit(debitId, paidValue, paymentMethod) {
     try {
         // Instanciando a dívida
         const debit = await debitModel.findOne({debitId: debitId});
@@ -11,6 +11,7 @@ async function payDebit(debitId, paidValue) {
         var payment = {
             index: payments.length + 1,
             date: new Date().toJSON(),
+            paymentMethod: paymentMethod,
             value: paidValue
         }
 
