@@ -10,7 +10,7 @@ async function payDebit(debitId, paidValue, paymentMethod) {
         // Criando o pagamento
         var payment = {
             index: payments.length + 1,
-            date: new Date().toJSON(),
+            date: new Date().toISOString(),
             paymentMethod: paymentMethod,
             value: paidValue
         }
