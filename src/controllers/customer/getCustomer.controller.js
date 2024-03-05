@@ -8,13 +8,7 @@ async function getCustomer(customerId) {
             message: 'CUSTOMER_NOT_FOUND'
         }
     } else {
-        return {
-            id: customer.customerId,
-            docId: customer.docId,
-            name: customer.name,
-            phone: customer.phone,
-            isActive: customer.isActive
-        }
+        return customer
     }
 }
 
