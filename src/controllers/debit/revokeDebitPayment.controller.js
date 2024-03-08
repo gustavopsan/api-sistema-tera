@@ -38,7 +38,7 @@ async function revokeDebitPayment(debitId, paymentIndex) {
 
         const debitUpdated = await debitModel.findOne({debitId: debitId});
 
-        return updateDebit;
+        return debitUpdated;
 
     } catch (error) {
         return error;
