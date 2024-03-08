@@ -14,6 +14,13 @@ async function revokeDebitPayment(debitId, paymentIndex) {
        
        payments.splice(index, 1);
 
+       var newIndex = 0;
+
+       payments.forEach(payment => {
+            payment[0].index = newIndex + 1;
+            newIndex++;
+       })
+
        const newValueRemaing = parseInt(debit.valueRemaing) + valueToReturn;
        const paymentsRemaing = parseInt(debit.paymentsRemaing) + 1;
 
@@ -31,7 +38,7 @@ async function revokeDebitPayment(debitId, paymentIndex) {
 
         const debitUpdated = await debitModel.findOne({debitId: debitId});
 
-        return debitUpdated;
+        return updateDebit;
 
     } catch (error) {
         return error;
