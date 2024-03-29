@@ -8,7 +8,7 @@ const saleSchema = new mongoose.Schema(
         },
         clientId: 'String',
         sellerId: 'String',
-        date: 'Object',
+        date: 'String',
         products: 'Array',
         totalValue: 'Decimal',
         paymentMethod: 'String',
