@@ -22,6 +22,7 @@ async function createDebit(sellerId, customerId, value, paymentsAmount, payments
                 debitId,
                 sellerId,
                 customerData,
+                originalValue: value,
                 totalValue,
                 valueRemaing: totalValue,
                 paymentsAmount,

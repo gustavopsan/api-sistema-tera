@@ -8,6 +8,7 @@ const debitSchema = new mongoose.Schema(
         },
         sellerId: 'String',
         customerData: 'Object',
+        originalValue: 'Decimal',
         totalValue: 'Decimal',
         valueRemaing: 'Decimal',
         payments: 'Array',
