@@ -19,6 +19,8 @@ async function paymentsToday(sellerId) {
             })
         });
 
+        console.log(newActualDate);
+
         return paymentsToday;
     } catch (error) {
         return error;
