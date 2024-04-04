@@ -1,4 +1,4 @@
-const debitModel = require("../models/debit.model");
+const debitModel = require("../../../models/debit.model");
 const dateCraft = require('date-craft');
 
 async function paymentsThisMonth(sellerId) {
@@ -7,6 +7,7 @@ async function paymentsThisMonth(sellerId) {
         var paymentsThisMonth = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
+        newActualDate.setHours(newActualDate.getHours());
 
         debits.forEach(debit => {
             debit.payments.forEach(payment => {

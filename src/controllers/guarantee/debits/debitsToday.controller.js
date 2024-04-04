@@ -1,4 +1,4 @@
-const debitModel = require("../models/debit.model");
+const debitModel = require("../../../models/debit.model");
 const dateCraft = require('date-craft');
 
 async function debitsToday(sellerId) {
@@ -7,6 +7,7 @@ async function debitsToday(sellerId) {
         var debitsToday = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
+        newActualDate.setHours(newActualDate.getHours() - 3);
 
         debits.forEach(debit => {
             var givedToday = new Date(debit.firstPaymentDate).toISOString().split('T')[0] == newActualDate.toISOString().split('T')[0];

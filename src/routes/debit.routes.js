@@ -7,7 +7,7 @@ const payDebit = require('../controllers/debit/payDebit.controller');
 const getDebit = require('../controllers/debit/getDebit.controller');
 const searchDebit = require('../controllers/debit/searchDebit.controller');
 const revokeDebitPayment = require('../controllers/debit/revokeDebitPayment.controller');
-const loadGeneralData = require('../controllers/loadGeneralData.controller');
+const loadGeneralData = require('../controllers/guarantee/loadGeneralData.controller');
 const listCustomerDebits = require('../controllers/debit/listCustomerDebits.controller');
 
 router.post('/debits/create', (req, res) => {

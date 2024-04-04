@@ -1,4 +1,4 @@
-const debitModel = require("../models/debit.model");
+const debitModel = require("../../../models/debit.model");
 const dateCraft = require('date-craft');
 
 async function paymentsThisWeek(sellerId) {
@@ -7,6 +7,7 @@ async function paymentsThisWeek(sellerId) {
         var paymentsThisWeek = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
+        newActualDate.setHours(newActualDate.getHours() - 3);
         var startOfWeek = dateCraft.getStartOfWeek(newActualDate);
         var endOfWeek = dateCraft.getEndOfWeek(newActualDate);
 

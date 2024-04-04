@@ -1,4 +1,4 @@
-const debitModel = require("../models/debit.model");
+const debitModel = require("../../../models/debit.model");
 const dateCraft = require('date-craft');
 
 async function debitsThisWeek(sellerId) {
@@ -7,6 +7,8 @@ async function debitsThisWeek(sellerId) {
         var debitsThisWeek = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
+        newActualDate.setHours(newActualDate.getHours() - 3);
+        
         var startOfWeek = dateCraft.getStartOfWeek(newActualDate);
         var endOfWeek = dateCraft.getEndOfWeek(newActualDate);
 
@@ -17,6 +19,8 @@ async function debitsThisWeek(sellerId) {
                 debitsThisWeek = parseFloat(debitsThisWeek) + parseFloat(debit.originalValue);
             }
         })
+
+        return debitsThisWeek;
     } catch (error) {
         return error;
     }
