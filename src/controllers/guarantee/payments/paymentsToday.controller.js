@@ -11,15 +11,16 @@ async function paymentsToday(sellerId) {
 
         debits.forEach(debit => {
             debit.payments.forEach(payment => {
-                var paidToday = payment[0].date.split('T')[0] == newActualDate.toISOString().split('T')[0];
+                var paymentDate = new Date(payment[0].date);
+                paymentDate.setHours(paymentDate.getHours() - 3);
+
+                var paidToday = paymentDate.toISOString().split('T')[0] == newActualDate.toISOString().split('T')[0];
 
                 if (paidToday) {
                     paymentsToday = parseFloat(paymentsToday) + parseFloat(payment[0].value);
                 }
             })
         });
-
-        console.log(newActualDate);
 
         return paymentsToday;
     } catch (error) {
