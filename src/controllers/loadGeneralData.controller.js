@@ -12,7 +12,7 @@ async function loadGeneralData(sellerId) {
         var creditsThisMonth = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
-        newActualDate.setHours(newActualDate.getHours() - 7);
+        newActualDate.setHours(newActualDate.getHours() - 3);
         var startOfWeek = dateCraft.getStartOfWeek(newActualDate);
         var endOfWeek = dateCraft.getEndOfWeek(newActualDate);
 
