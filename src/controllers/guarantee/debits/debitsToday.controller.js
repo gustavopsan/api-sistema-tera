@@ -11,8 +11,10 @@ async function debitsToday(sellerId) {
 
         debits.forEach(debit => {
             var debitDate = new Date(debit.firstPaymentDate);
-            debitDate.setHours(debitDate.getHours() - 3);
+
             var givedToday = debitDate.toISOString().split('T')[0] == newActualDate.toISOString().split('T')[0];
+
+            console.log(newActualDate);
 
             if (givedToday) {
                 debitsToday = parseFloat(debitsToday) + parseFloat(debit.originalValue);
