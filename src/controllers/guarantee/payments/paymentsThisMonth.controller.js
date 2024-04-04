@@ -3,7 +3,7 @@ const dateCraft = require('date-craft');
 
 async function paymentsThisMonth(sellerId) {
     try {
-        const debits = await debitModel.finc({ sellerId:sellerId });
+        const debits = await debitModel.find({ sellerId:sellerId });
         var paymentsThisMonth = 0;
 
         var newActualDate = dateCraft.getCurrentDate();

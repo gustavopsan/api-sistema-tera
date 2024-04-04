@@ -11,7 +11,7 @@ async function paymentsThisWeek(sellerId) {
         var endOfWeek = dateCraft.getEndOfWeek(newActualDate);
 
         debits.forEach(debit => {
-            debits.payments.forEach(payment => {
+            debit.payments.forEach(payment => {
                 var paidThisWeek = payment[0].date.split('T')[0] >= startOfWeek.toISOString().split('T')[0] && payment[0].date.split('T')[0] <= endOfWeek.toISOString().split('T')[0];
 
                 if (paidThisWeek) {

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const dateCraft = require('date-craft');
 
 const createDebit = require('../controllers/debit/createDebit.controller');
 const listDebits = require('../controllers/debit/listDebits.controller');
@@ -91,6 +92,12 @@ router.post('/debits/loadGeneralData', (req, res) => {
        .catch(error => {
             res.json(error)
         })
+})
+
+router.get('/debits/debug', (req, res) => {
+    var newActualDate = dateCraft.getCurrentDate();;
+
+    res.json(newActualDate)
 })
 
 module.exports = router;
