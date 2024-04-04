@@ -14,9 +14,9 @@ async function loadGeneralData(sellerId) {
         paymentsToday: await paymentsToday(sellerId),
         paymentsThisWeek: await paymentsThisWeek(sellerId),
         paymentsThisMonth: await paymentsThisMonth(sellerId),
-        debitsToday: await debitsToday(sellerId),
-        debitsThisWeek: await debitsThisWeek(sellerId),
-        debitsThisMonth: await debitsThisMonth(sellerId),
+        creditsToday: await debitsToday(sellerId),
+        creditsThisWeek: await debitsThisWeek(sellerId),
+        creditsThisMonth: await debitsThisMonth(sellerId),
         paymentsRemaing: await paymentsRemaing(sellerId),
         allDebitsThisMonth: await allDebitsThisMonth(sellerId)
     }
