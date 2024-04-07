@@ -1,4 +1,5 @@
 const debitModel = require("../../models/debit.model");
+const dateCraft = require("date-craft");
 
 async function allDebitsThisMonth(sellerId) {
     try {
@@ -6,8 +7,20 @@ async function allDebitsThisMonth(sellerId) {
         var originalValue = 0;
         var debitsThisMonth = 0;
 
+        var newActualDate = dateCraft.getCurrentDate();
+        newActualDate.setHours(newActualDate.getHours() - 3);
+
         debits.forEach(debit => {
-            originalValue = parseFloat(originalValue) + parseFloat(debit.originalValue);
+            var debitDate = new Date(debit.firstPaymentDate);
+            debitDate.setHours(debitDate.getHours() + 8)
+
+            var createdThisMonth = debitDate.getMonth() == newActualDate.getMonth();
+
+            console.log(debitDate)
+
+            if (createdThisMonth) {
+                originalValue = parseFloat(originalValue) + parseFloat(debit.originalValue);
+            }
         });
 
         debitsThisMonth = originalValue + ((originalValue / 100) * 20);

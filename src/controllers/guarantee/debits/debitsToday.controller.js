@@ -14,8 +14,6 @@ async function debitsToday(sellerId) {
 
             var givedToday = debitDate.toISOString().split('T')[0] == newActualDate.toISOString().split('T')[0];
 
-            console.log(newActualDate);
-
             if (givedToday) {
                 debitsToday = parseFloat(debitsToday) + parseFloat(debit.originalValue);
             }
