@@ -9,6 +9,7 @@ const searchDebit = require('../controllers/debit/searchDebit.controller');
 const revokeDebitPayment = require('../controllers/debit/revokeDebitPayment.controller');
 const loadGeneralData = require('../controllers/guarantee/loadGeneralData.controller');
 const listCustomerDebits = require('../controllers/debit/listCustomerDebits.controller');
+const filterDebits = require('../controllers/debit/filterDebits.controller');
 
 router.post('/debits/create', (req, res) => {
     const { sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate } = req.body;
@@ -22,6 +23,14 @@ router.post('/debits/list', (req, res) => {
     const { sellerId } = req.body;
 
     listDebits(sellerId)
+        .then(response => res.json(response))
+        .catch(error => res.json(error))
+})
+
+router.post('/debits/filter', (req, res) => {
+    const { sellerId, initialDate, finalDate } = req.body;
+
+    filterDebits(sellerId, initialDate, finalDate)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })
