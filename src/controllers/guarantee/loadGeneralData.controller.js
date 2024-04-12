@@ -9,6 +9,8 @@ const debitsToday = require('./debits/debitsToday.controller');
 const debitsThisWeek = require('./debits/debitsThisWeek.controller');
 const debitsThisMonth = require('./debits/debitsThisMonth.controller');
 
+const expensesThisMonth = require('./expensesThisMonth.controller');
+
 async function loadGeneralData(sellerId) {
     return {
         paymentsToday: await paymentsToday(sellerId),
@@ -18,7 +20,8 @@ async function loadGeneralData(sellerId) {
         creditsThisWeek: await debitsThisWeek(sellerId),
         creditsThisMonth: await debitsThisMonth(sellerId),
         paymentsRemaing: await paymentsRemaing(sellerId),
-        allDebitsThisMonth: await allDebitsThisMonth(sellerId)
+        allDebitsThisMonth: await allDebitsThisMonth(sellerId),
+        expensesThisMonth: await expensesThisMonth(sellerId)
     }
 }
 
