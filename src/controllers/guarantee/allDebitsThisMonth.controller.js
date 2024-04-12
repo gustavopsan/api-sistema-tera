@@ -16,8 +16,6 @@ async function allDebitsThisMonth(sellerId) {
 
             var createdThisMonth = debitDate.getMonth() == newActualDate.getMonth();
 
-            console.log(debitDate)
-
             if (createdThisMonth) {
                 originalValue = parseFloat(originalValue) + parseFloat(debit.originalValue);
             }
