@@ -10,7 +10,6 @@ async function expensesThisMonth(sellerId) {
         newActualDate.setHours(newActualDate.getHours() - 3);
 
         expenses.forEach(expense => {
-            console.log(expense)
             var expenseDate = new Date(expense.date);
             if(expenseDate.getMonth() === newActualDate.getMonth()) {
                 monthExpenses = parseFloat(monthExpenses) + parseFloat(expense.value);
