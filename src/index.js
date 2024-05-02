@@ -6,11 +6,15 @@ const CORS = require("cors");
 const bodyParser = require('body-parser');
 const app = express();
 
-//Routes
+// Guarantee Routes
 const userRoutes = require('./routes/user.routes')
 const customerRoutes = require('./routes/customer.routes');
 const debitRoutes = require('./routes/debit.routes');
 const expenseRoutes = require('./routes/expense.routes');
+
+// Catalog Routes
+const categoriesRoutes = require('./routes/categories.routes');
+const catalogInfoRoutes = require('./routes/catalogInfo.routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +40,8 @@ app.use(userRoutes);
 app.use(customerRoutes);
 app.use(debitRoutes);
 app.use(expenseRoutes);
+app.use(categoriesRoutes);
+app.use(catalogInfoRoutes);
 
 require('../src/modules/databaseConnection.module');
 
