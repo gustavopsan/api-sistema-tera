@@ -1,6 +1,6 @@
 const catalogInfoModel = require('../../../models/catalogInfo.model');
 
-async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogName, topoBannerUrl, openHour) {
+async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogName, topoBannerUrl) {
     try {
         var records = await catalogInfoModel.findOne({ sellerId: sellerId });
 
@@ -18,7 +18,9 @@ async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogNam
                     instaLink,
                     catalogName,
                     topoBannerUrl,
-                    openHour
+                    openHour: [],
+                    paymentOptions: [],
+                    deliveryValues: []
                 }
             );
 

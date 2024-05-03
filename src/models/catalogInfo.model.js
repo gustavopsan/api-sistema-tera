@@ -7,7 +7,9 @@ const catalogInfoSchema = new mongoose.Schema(
         instaLink: 'String',
         catalogName: 'String',
         topoBannerUrl: 'String',
-        openHour: 'Array'
+        openHour: 'Array',
+        paymentOptions: 'Array',
+        deliveryValues: 'Array',
     },
     {
         timestamps: true
