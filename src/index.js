@@ -15,6 +15,7 @@ const expenseRoutes = require('./routes/expense.routes');
 // Catalog Routes
 const categoriesRoutes = require('./routes/categories.routes');
 const catalogInfoRoutes = require('./routes/catalogInfo.routes');
+const productRoutes = require('./routes/product.routes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,6 +43,7 @@ app.use(debitRoutes);
 app.use(expenseRoutes);
 app.use(categoriesRoutes);
 app.use(catalogInfoRoutes);
+app.use(productRoutes);
 
 require('../src/modules/databaseConnection.module');
 
