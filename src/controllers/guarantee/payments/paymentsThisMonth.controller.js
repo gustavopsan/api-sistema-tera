@@ -7,11 +7,14 @@ async function paymentsThisMonth(sellerId) {
         var paymentsThisMonth = 0;
 
         var newActualDate = dateCraft.getCurrentDate();
-        newActualDate.setHours(newActualDate.getHours());
+        newActualDate.setHours(newActualDate.getHours() - 3);
 
         debits.forEach(debit => {
             debit.payments.forEach(payment => {
-                var paidThisMonth = new Date(payment[0].date).getMonth() == newActualDate.getMonth();
+                var paymentDate = new Date(payment[0].date);
+                paymentDate.setHours(paymentDate.getHours() - 3);
+
+                var paidThisMonth = paymentDate.getMonth() == newActualDate.getMonth();
 
                 if (paidThisMonth) {
                     console.log(payment[0].date);
