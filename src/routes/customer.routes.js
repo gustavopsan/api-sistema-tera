@@ -5,6 +5,7 @@ const getCustomer = require('../controllers/customer/getCustomer.controller');
 const listCustomers = require('../controllers/customer/listCustomers.controller');
 const searchCustomer = require('../controllers/customer/searchCustomer.controller');
 const updateCustomer = require('../controllers/customer/updateCustomer.controller');
+const excludeCustomer = require('../controllers/customer/excludeCustomer.controller');
 
 router.post('/customer/create', (req, res) => {
     const { sellerId, name, businessModel, address, docId, phone, route } = req.body;
@@ -60,6 +61,18 @@ router.post('/customer/find', (req, res) => {
     getCustomer(customerId)
         .then(response => {
             res.json(response);
+        })
+        .catch(err => {
+            res.json(err)
+        })
+})
+
+router.post('/customer/exclude', (req, res) => {
+    const {sellerId, customerId} = req.body;
+
+    excludeCustomer(sellerId, customerId)
+        .then(response => {
+            res.json(response)
         })
         .catch(err => {
             res.json(err)
