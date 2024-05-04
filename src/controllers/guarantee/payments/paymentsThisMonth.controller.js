@@ -14,10 +14,7 @@ async function paymentsThisMonth(sellerId) {
                 var paidThisMonth = new Date(payment[0].date).getMonth() == newActualDate.getMonth();
 
                 if (paidThisMonth) {
-                    console.log({
-                        debitId: debit._id,
-                        date: payment[0].date
-                    });
+                    console.log(payment[0].date);
                     paymentsThisMonth = parseFloat(paymentsThisMonth) + parseFloat(payment[0].value);
                 }
             })
