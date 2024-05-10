@@ -2,7 +2,7 @@ const productModel = require('../../../models/product.model');
 
 async function updateProduct(productId, key, newValue) {
     try {
-        const product = await productModel.findByIdAndIpdate(
+        const product = await productModel.findByIdAndUpdate(
             { _id: productId },
             { [key]: newValue },
             { new: false }
