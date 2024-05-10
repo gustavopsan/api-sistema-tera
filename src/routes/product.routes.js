@@ -4,6 +4,7 @@ const createProduct = require('../controllers/catalog/product/createProduct.cont
 const listProducts = require('../controllers/catalog/product/listProducts.controller');
 const updateProduct = require('../controllers/catalog/product/updateProduct.controller');
 const getProduct = require('../controllers/catalog/product/getProduct.controller');
+const removeProduct = require('../controllers/catalog/product/removeProduct.comtroller');
 
 router.post('/product/create', (req, res) => {
     const { sellerId, name, description, category, originalValue, promotionalValue, imagePath } = req.body;
@@ -39,6 +40,18 @@ router.post('/product/list', (req, res) => {
         .catch(err => {
             res.json(err)
         })
+})
+
+router.post('/product/remove', (req, res) => {
+    const { productId } = req.body;
+
+    removeProduct(productId)
+        .then(response => {
+             res.json(response);
+         })
+        .catch(err => {
+             res.json(err)
+         })
 })
 
 router.post('/product/update', (req, res) => {
