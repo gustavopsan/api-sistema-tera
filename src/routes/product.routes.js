@@ -7,6 +7,7 @@ const getProduct = require('../controllers/catalog/product/getProduct.controller
 const removeProduct = require('../controllers/catalog/product/removeProduct.comtroller');
 const listInactiveProducts = require('../controllers/catalog/product/listInactiveProducts.controller');
 const searchProduct = require('../controllers/catalog/product/searchProducts.controller');
+const listCategoryProducts = require('../controllers/catalog/product/listCategoryProducts.controller');
 
 router.post('/product/create', (req, res) => {
     const { sellerId, name, description, category, originalValue, promotionalValue, imagePath } = req.body;
@@ -24,6 +25,18 @@ router.post('/product/get', (req, res) => {
     const { productId } = req.body;
 
     getProduct(productId)
+        .then(response => {
+             res.json(response);
+         })
+        .catch(err => {
+             res.json(err)
+         })
+})
+
+router.post('/product/listCategoryProducts', (req, res) => {
+    const { sellerId, category } = req.body;
+
+    listCategoryProducts(sellerId, category)
         .then(response => {
              res.json(response);
          })
