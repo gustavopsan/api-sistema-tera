@@ -2,7 +2,9 @@ const catalogInfoModel = require('../../../models/catalogInfo.model');
 
 async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogName, topoBannerUrl) {
     try {
-        var records = await catalogInfoModel.findOne({ sellerId: sellerId });
+        var records = await catalogInfoModel.find({ sellerId: sellerId });
+
+        console.log(records)
 
         var exists = records.length > 0;
 
