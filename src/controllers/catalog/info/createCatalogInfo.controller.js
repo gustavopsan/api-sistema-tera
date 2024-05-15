@@ -20,7 +20,7 @@ async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogNam
                     instaLink,
                     catalogName,
                     topoBannerUrl,
-                    openHour: [],
+                    openHour: {},
                     paymentOptions: [],
                     deliveryValues: []
                 }
