@@ -13,7 +13,7 @@ const sendMail = async (email, subject, text, html) => {
         });
 
         await transporter.sendMail({
-            from: `Tera Mailer ${process.env.MAILER_USERNAME}`,
+            from: `Tera Mailer ${ process.env.MAILER_USERNAME }`,
             to: email,
             subject: subject,
             text: text,
