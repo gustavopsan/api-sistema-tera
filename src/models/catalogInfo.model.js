@@ -8,7 +8,7 @@ const catalogInfoSchema = new mongoose.Schema(
         catalogName: 'String',
         topoBannerUrl: 'String',
         openHour: 'Object',
-        paymentOptions: 'Array',
+        paymentOptions: 'Object',
         deliveryValues: 'Array',
     },
     {

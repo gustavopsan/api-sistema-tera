@@ -21,7 +21,12 @@ async function createCatalogInfo(sellerId, whatsappNumber, instaLink, catalogNam
                     catalogName,
                     topoBannerUrl,
                     openHour: {},
-                    paymentOptions: [],
+                    paymentOptions: {
+                        pix: false,
+                        money: false,
+                        card: false,
+                        ticket: false
+                    },
                     deliveryValues: []
                 }
             );
