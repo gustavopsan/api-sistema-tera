@@ -9,9 +9,10 @@ async function getUser(userId) {
         }
     } else {
         return {
-            id: user.userId,
+            id: user._id,
             docId: user.docId,
             name: user.name,
+            module: user.module,
             email: user.email,
             phone: user.phone,
             role: user.role,
