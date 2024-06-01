@@ -19,6 +19,7 @@ async function checkSession(token) {
             name: userLogged.name,
             email: userLogged.email,
             role: userLogged.role,
+            modules: userLogged.module,
             phone: userLogged.phone,
             isActive: userLogged.isActive
         }
