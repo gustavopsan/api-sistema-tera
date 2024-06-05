@@ -28,9 +28,9 @@ router.post('/debits/list', (req, res) => {
 })
 
 router.post('/debits/filter', (req, res) => {
-    const { sellerId, initialDate, finalDate } = req.body;
+    const { sellerId, initialDate, finalDate, filterType } = req.body;
 
-    filterDebits(sellerId, initialDate, finalDate)
+    filterDebits(sellerId, initialDate, finalDate, filterType)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })
