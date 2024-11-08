@@ -2,6 +2,7 @@ const router = require('express').Router();
 const dateCraft = require('date-craft');
 
 const createDebit = require('../controllers/debit/createDebit.controller');
+const createCustomDebit = require('../controllers/debit/createCustomDebit.controller');
 const listDebits = require('../controllers/debit/listDebits.controller');
 const payDebit = require('../controllers/debit/payDebit.controller');
 const getDebit = require('../controllers/debit/getDebit.controller');
@@ -15,6 +16,14 @@ router.post('/debits/create', (req, res) => {
     const { sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate } = req.body;
 
     createDebit(sellerId, customerId, value, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate)
+        .then(response => res.json(response))
+        .catch(error => res.json(error))
+})
+
+router.post('/debits/custom', (req, res) => {
+    const { sellerId, customerId, value, totalValue, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate } = req.body;
+
+    createCustomDebit(sellerId, customerId, value, totalValue, paymentsAmount, paymentsRemaing, paymentModel, firstPaymentDate)
         .then(response => res.json(response))
         .catch(error => res.json(error))
 })
